@@ -8,7 +8,7 @@ user_input = sys.argv[1:]
 def random_words(words):
     # loop over array length
     try:
-        for i in range(len(words) - 1, 0, -1):
+        for i in range(len(words) - 1, -1,  -1):
             # generate a random number
             random_index = random.randint(0, i+1)
             # swap the words based on index
@@ -18,10 +18,9 @@ def random_words(words):
         # print it to the user
 
         user_input.clear()
-        sys.argv = [sys.argv[0]]
         return sys.stdout.write(str(sentence) + '\n')
     except:
-        print("Could not shuffle words")
+        print("COULD NOT SHUFFLE WORDS, TRY AGAIN!")
 
 
 if __name__ == '__main__':
