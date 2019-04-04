@@ -6,18 +6,19 @@ user_input = sys.argv[1:]
 
 
 def random_words(words):
-
-    #rand_index = random.randint(0, len(user_input) - 1)
-    #print("***USER_INPUT***", user_input)
-    # print(user_input[rand_index])
-
+    # loop over array length
     for i in range(len(words) - 1, 0, -1):
+        # generate a random number
         random_index = random.randint(0, i+1)
-
+        # swap the words based on index
         words[i], words[random_index] = words[random_index], words[i]
+        # join the words to form a sentence
+    sentence = " ".join(words)
+    # print it to the user
 
-        sentence = " ".join(words)
-    print(sentence)
+    user_input.clear()
+    sys.argv = [sys.argv[0]]
+    return sys.stdout.write(str(sentence) + '\n')
 
 
 if __name__ == '__main__':
