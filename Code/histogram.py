@@ -1,5 +1,4 @@
 
-
 def get_words(file_name):
     """THIS FUNCTION WILL GET THE WORDS FROM THE
     FILE AND SAVE THEM INSIDE AN ARRAY

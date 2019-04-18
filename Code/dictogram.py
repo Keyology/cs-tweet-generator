@@ -1,5 +1,5 @@
-#!python
 
+    
 from __future__ import division, print_function  # Python 2 and 3 compatibility
 
 
@@ -8,11 +8,11 @@ class Dictogram(dict):
 
     def __init__(self, word_list=None):
         """Initialize this histogram as a new dict and count given words."""
-        super(Dictogram, self).__init__()  # Initialize this as a new dict
-        # Add properties to track useful word counts for this histogram
+        super(Dictogram, self).__init__()  # Initialize  new Dictogram
+        # Add properties to track  word counts for  histogram
         self.types = 0  # Count of distinct word types in this histogram
         self.tokens = 0  # Total count of all word tokens in this histogram
-        # Count words in given list, if any
+        # Count words in given list
         if word_list is not None:
             for word in word_list:
                 self.add_count(word)
@@ -20,10 +20,24 @@ class Dictogram(dict):
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
         # TODO: Increase word frequency by count
+        key = str(word)
+        value = self.get(key, None)
+        if value is not None:
+            self[key] = value + count
+        else:
+            self[key] = count
+            self.types += 1
+        self.tokens += count
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
         # TODO: Retrieve word frequency count
+        key = str(word)
+        value = self.get(key, None)
+        if value is not None:
+            return value
+        else:
+            return 0
 
 
 def print_histogram(word_list):
@@ -53,7 +67,7 @@ def main():
         print_histogram(fish_text.split())
         # Test histogram on words in a long repetitive sentence
         woodchuck_text = ('how much wood would a wood chuck chuck'
-                          ' if a wood chuck could chuck wood')
+            ' if a wood chuck could chuck wood')
         print_histogram(woodchuck_text.split())
 
 
