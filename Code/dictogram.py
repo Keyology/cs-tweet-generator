@@ -1,7 +1,4 @@
 
-    
-from __future__ import division, print_function  # Python 2 and 3 compatibility
-
 
 class Dictogram(dict):
     """Dictogram is a histogram implemented as a subclass of the dict type."""
@@ -67,7 +64,7 @@ def main():
         print_histogram(fish_text.split())
         # Test histogram on words in a long repetitive sentence
         woodchuck_text = ('how much wood would a wood chuck chuck'
-            ' if a wood chuck could chuck wood')
+                          ' if a wood chuck could chuck wood')
         print_histogram(woodchuck_text.split())
 
 
