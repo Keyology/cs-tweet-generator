@@ -130,9 +130,9 @@ class HashTable(object):
         if (entry is not None):
 
             bucket.delete(entry)
-        new_entry = (key, value)
 
         # append the bucket
+        new_entry = (key, value)
         bucket.append(new_entry)
 
     def delete(self, key):
