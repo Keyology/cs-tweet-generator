@@ -94,7 +94,7 @@ class HashTable(object):
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
         TODO: Running time: O(???) Why and under what conditions?"""
-        # O(n) because it is just getting an item
+        # O(1) because it is just getting an item
 
         # TODO: Find bucket where given key belongs
         # O(1) because you are indexing an array
@@ -117,7 +117,7 @@ class HashTable(object):
     def set(self, key, value):
         """Insert or update the given key with its associated value.
         TODO: Running time: O(???) Why and under what conditions?"""
-        # O(n) it has to check bucket and  key value before it finds value and sets it
+        # O(1) it has to check bucket and  key value before it finds value and sets it
         # Find bucket where given key belongs
         index = self._bucket_index(key)
         # gets the bucket index
