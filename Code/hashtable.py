@@ -80,7 +80,8 @@ class HashTable(object):
         """Return True if this hash table contains the given key, or False.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Find bucket where given key belongs
-        # O(n) when it has to check over multiple buckets and check their values
+        # O(1) when it has to check over multiple buckets and check their values
+        # Overall O(n/b)
 
         # TODO: Check if key-value entry exists in bucket
         # check out the entry that was returned - is is None
@@ -100,7 +101,7 @@ class HashTable(object):
         # O(1) because you are indexing an array
         buckets = self.buckets[self._bucket_index(key)]
         # TODO: Check if key-value entry exists in bucket
-        # o(1) to check if value exsist
+        # O(1) to check if value exsist
         entry = buckets.find(lambda item: item[0] == key)
         # TODO: If found, return value associated with given key
         if entry is not None:  # found o(1)
@@ -113,11 +114,13 @@ class HashTable(object):
 
         # closure is is a function that can access the variable,parameters of the parent function
         #
+        # Overall O(n/b)
 
     def set(self, key, value):
         """Insert or update the given key with its associated value.
         TODO: Running time: O(???) Why and under what conditions?"""
         # O(1) it has to check bucket and  key value before it finds value and sets it
+        # overall O(n/b)
         # Find bucket where given key belongs
         index = self._bucket_index(key)
         # gets the bucket index
