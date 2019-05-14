@@ -42,10 +42,10 @@ def test_sampler(words, number):
 def sampler(words):
     length = len(words)
 
-    dictionary = {}
+    dictionary = words
 
-    for word in words:
-        dictionary[word] = words.count(word)
+    # for word in words:
+    #     dictionary[word] = words.count(word)
 
     random_value = random.random()
     total_value = sum(dictionary.values())

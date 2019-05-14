@@ -15,7 +15,7 @@ def first_order(corpus_of_words):
         if corpus_length > (i + 1):
             word = words[i + 1]
             if key not in chain:
-                #chain[key] = [word]
+                # chain[key] = [word]
                 chain[key] = Dictogram([word])
                 # use dictogram class
             else:
@@ -43,30 +43,42 @@ def second_order(corpus_of_words):
 
 
 def create_sentence(markov_chain):
-    sentence = []
+    sentence = list()
 
-    start_word = list(markov_chain.keys())[0]
+    # start_word = list(markov_chain.keys())[0]
+    start_word = random.choice(list(markov_chain.keys()))
 
     sentence.append(start_word)
 
     for i in range(0, 10):
-        # get
-        print("SENTENCE", sentence)
+
         get_value = markov_chain.get(sentence[-1])
-        print("***GET VALUE***", get_value)
-        print("GET VALUE", get_value)
-        # random_word = random.choice(get_value)
-        # rename variable
-        # use counts in dictogram to sample  words based on probability
         random_word = sampler(get_value)
-        print("RANDOM WORDS!", random_word)
         sentence.append(random_word)
+    sentence[-1] = "."
+    return " ".join(sentence)
+
+
+def second_order_sentence(markov_chain):
+    start_words = random.choice(list(markov_chain.keys()))
+    sentence = list(start_words)
+    track_words = start_words
+
+    for _ in range(0, 12):
+        get_value = markov_chain.get(track_words)
+        random_word = sampler(get_value)
+        sentence.append(random_word)
+        track_words = (track_words[-1], random_word)
+    sentence[0] = sentence[0].capitalize()
+    sentence[-1] = "."
     return " ".join(sentence)
 
 
 if __name__ == "__main__":
     corpus = get_words("article.txt")
     # print(second_order(corpus))
-    create_markov = first_order(corpus)
-    #print("FIRST ORDER CHAIN", create_markov)
-    print(create_sentence(create_markov))
+    create_first_order_markov = first_order(corpus)
+    create_second_order_markov = second_order(corpus)
+    print(second_order_sentence(create_second_order_markov))
+    # print("FIRST ORDER CHAIN", create_markov)
+    # print(create_sentence(create_first_order_markov))
