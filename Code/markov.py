@@ -2,11 +2,9 @@ import random
 from dictogram import Dictogram
 from histogram import get_words
 from stochastics import sampler
-from listogram import Listogram
 
 
 def first_order(corpus_of_words):
-    # print("****Corpus of words*****", corpus_of_words)
     words = corpus_of_words
     chain = {}
     corpus_length = len(corpus_of_words)

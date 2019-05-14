@@ -44,8 +44,10 @@ def sampler(words):
 
     dictionary = words
 
-    # for word in words:
-    #     dictionary[word] = words.count(word)
+    if type(words) == list():
+        for word in words:
+            dictionary = {}
+            dictionary[word] = words.count(word)
 
     random_value = random.random()
     total_value = sum(dictionary.values())
