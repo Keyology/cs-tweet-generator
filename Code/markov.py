@@ -50,7 +50,7 @@ def create_sentence(markov_chain):
 
     sentence.append(start_word)
 
-    for i in range(0, 10):
+    for _ in range(0, 10):
 
         get_value = markov_chain.get(sentence[-1])
         random_word = sampler(get_value)
