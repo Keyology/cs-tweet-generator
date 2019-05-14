@@ -12,6 +12,7 @@ def get_words(file_name):
             list_of_words = line.replace('\n', " ").replace('\r', ' ').replace(
                 ',', " ").replace("\\", " ").replace("_", " ")
             list_of_words = line.strip().split(" ")
+
             for words in list_of_words:
                 words_list.append(words)
     # print("***WORDS LIST***", words_list)
