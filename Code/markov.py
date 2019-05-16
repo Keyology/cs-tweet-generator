@@ -13,12 +13,10 @@ def first_order(corpus_of_words):
         if corpus_length > (i + 1):
             word = words[i + 1]
             if key not in chain:
-                # chain[key] = [word]
                 chain[key] = Dictogram([word])
-                # use dictogram class
+
             else:
                 chain[key].add_count(word)
-                # add new values using dictogram class
     return chain
 
 
