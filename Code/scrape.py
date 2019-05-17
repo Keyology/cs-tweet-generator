@@ -11,14 +11,17 @@ def get_article(article_url):
     params = {'token': DIFFBOT_DEV_TOKEN,
               'url': article_url,
               'discussion': 'false'}
-    print("***PARAMS***", params)
+    # print("***PARAMS***", params)
     res = requests.get(DIFFBOT_API_URL, params)  # hit the Diffbot API
     res_json = res.json()
+    # print("**RESPONSE***", res_json)
     if 'objects' in res_json:
-        res_obj = ['objects'][0]
-        # print("***RESPONSE***", res_obj)  # parse the response object
+        res_obj = res_json['objects'][0]
+        # print("***RESPONSE***", type(res_obj))
+        # pprint(res_obj)
+        return res_obj['text']
 
-        return res_obj['text']                      # pull out the text
+        # pull out the text
     else:
         print('Error: JSON response has not objects key:')
         pprint(res_json)  # pretty-print JSON with each key on a separate line
@@ -32,17 +35,20 @@ if __name__ == '__main__':
     urls_file.close()
 
     corpus = ''
+    file_open = True
     counter = 0
-    output_file = open(f'corpus/corpus{counter}.txt', 'w')
+    print("COUNTER", counter)
+
+    output_file = open(f'corpus/corpus-{counter}.txt', 'w')
 
     # for line in urls_file:  # read one line of file per iteration, each line is a url
     for line in urls_list:  # iterate over list of urls
         # remove leading/trailing whitespace
-        article = get_article(str(line))
-        corpus += article
-
-        output_file.write(corpus)
         counter += 1
+        url = f"https://techcrunch.com{line}"
+        article = get_article(url)
+        corpus += article
+        output_file.write(corpus)
         print('Corpus saved to {}'.format(output_file.name))
 
     output_file.close()

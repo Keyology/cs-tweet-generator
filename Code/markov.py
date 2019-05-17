@@ -3,6 +3,8 @@ from dictogram import Dictogram
 from histogram import get_words
 from stochastics import sampler
 
+corpus = get_words("corpus/corpus-0.txt")
+
 
 def first_order(corpus_of_words):
     words = corpus_of_words
@@ -41,8 +43,7 @@ def second_order(corpus_of_words):
 
 def sentencize(word_list):
     word_list[0] = word_list[0].capitalize()
-    word_list.append(".")
-    return " ".join(word_list)
+    return " ".join(word_list) + '.'
 
 
 def create_sentence(markov_chain):
@@ -52,7 +53,7 @@ def create_sentence(markov_chain):
     start_word = random.choice(list(markov_chain.keys()))
     word_list.append(start_word)
 
-    for _ in range(0, 10):
+    for _ in range(0, 25):
         last_word = word_list[-1]
         histogram = markov_chain.get(last_word)
         random_word = sampler(histogram)
@@ -69,7 +70,7 @@ def second_order_sentence(markov_chain):
 
     track_words = start_word_tuple
 
-    for _ in range(0, 12):
+    for _ in range(0, 15):
         histogram = markov_chain.get(track_words)
         random_word = sampler(histogram)
         word_list.append(random_word)
@@ -81,7 +82,6 @@ def second_order_sentence(markov_chain):
 
 
 if __name__ == "__main__":
-    corpus = get_words("article.txt")
     # print(second_order(corpus))
     create_first_order_markov = first_order(corpus)
     create_second_order_markov = second_order(corpus)

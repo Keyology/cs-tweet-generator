@@ -37,12 +37,12 @@ def send_request(url):
     return driver.page_source
 
 
-def is_good_response(resp):
-    """returns true if response is html"""
-    conten_type = resp.headers['content-Type'].lower()
-    return (resp.status_code == 200
-            and conten_type is not None
-            and conten_type.find('html') > -1)
+# def is_good_response(resp):
+#     """returns true if response is html"""
+#     conten_type = resp.headers['content-Type'].lower()
+#     return (resp.status_code == 200
+#             and conten_type is not None
+#             and conten_type.find('html') > -1)
 
 
 def get_url(html):
