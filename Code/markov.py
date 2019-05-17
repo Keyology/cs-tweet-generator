@@ -77,7 +77,7 @@ def second_order_sentence(markov_chain):
         # updating tuple of last words that I am tracking
         track_words = (track_words[-1], random_word)
 
-    #   Capitalize first word, add period and spaces
+    #  Capitalize first word, add period and spaces
     return sentencize(word_list)
 
 
